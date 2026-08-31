@@ -1,26 +1,104 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --vertex-primary-500: #f97316;
+  --vertex-primary-400: #fb923c;
+  --vertex-primary-300: #fdba74;
+  --vertex-primary-200: #fed7aa;
+  --vertex-primary-100: #ffeee5;
+  --vertex-neutral-900: #0f172a;
+  --vertex-neutral-700: #334155;
+  --vertex-neutral-500: #64748b;
+  --vertex-neutral-300: #cbd5e1;
+  --vertex-neutral-200: #e2e8f0;
+  --vertex-neutral-100: #f1f5f9;
+  --vertex-neutral-50: #fafafc;
+  --vertex-white: #ffffff;
+  --vertex-ink: #15181d;
+  --vertex-muted: #5f6b7a;
+  --vertex-border: #f2dfd4;
+  --vertex-panel: rgba(255, 255, 255, 0.86);
+  --vertex-page: #f4f0ec;
+  --vertex-shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --vertex-shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --vertex-shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.1);
+  --vertex-shadow-xl: 0 20px 40px -8px rgba(15, 23, 42, 0.12);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-vertex-primary-500: var(--vertex-primary-500);
+  --color-vertex-primary-400: var(--vertex-primary-400);
+  --color-vertex-primary-300: var(--vertex-primary-300);
+  --color-vertex-primary-200: var(--vertex-primary-200);
+  --color-vertex-primary-100: var(--vertex-primary-100);
+  --color-vertex-neutral-900: var(--vertex-neutral-900);
+  --color-vertex-neutral-700: var(--vertex-neutral-700);
+  --color-vertex-neutral-500: var(--vertex-neutral-500);
+  --color-vertex-neutral-300: var(--vertex-neutral-300);
+  --color-vertex-neutral-200: var(--vertex-neutral-200);
+  --color-vertex-neutral-100: var(--vertex-neutral-100);
+  --color-vertex-neutral-50: var(--vertex-neutral-50);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #f4f0ec;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08)),
+    #f4f0ec;
+  color: var(--vertex-ink);
+  font-family: var(--font-inter), Arial, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--vertex-primary-200);
+  color: var(--vertex-neutral-900);
+}
+
+.page-shell {
+  position: relative;
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04)),
+    repeating-linear-gradient(
+      135deg,
+      rgba(233, 167, 134, 0.1) 0,
+      rgba(233, 167, 134, 0.1) 2px,
+      transparent 2px,
+      transparent 18px
+    );
+  background-position: 0 0, 0 0;
+  background-size: auto, 100% 100%;
+}
+
+.page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(244, 240, 236, 0.15) 100%);
+  pointer-events: none;
+}
+
+.page-shell > * {
+  position: relative;
+  z-index: 1;
 }
